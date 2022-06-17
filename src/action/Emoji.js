@@ -38,6 +38,7 @@ const getSavedMessages = () => async (dispatch) => {
 const addEmoji = (data) => async (dispatch) => {
   try {
     console.log('data', data)
+    data['Key'] = '::' + data['Key'] + '::'
     dispatch({ type: ADD_EMOJI_REQUEST })
     dispatch({ type: ADD_EMOJI_SUCCESS, payload: data })
   } catch (err) {
