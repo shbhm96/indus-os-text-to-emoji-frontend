@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+//import { Container, Row } from 'react-bootstrap'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Header from './component/Header'
+import HomePage from './component/HomePage'
+import AddEmoji from './component/shared/AddEmoji'
+import NotFoundPage from './component/shared/NotFoundPage'
+import ShowMessages from './component/ShowMessages'
+import TextToEmoji from './component/TextToEmoji'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Header />
+
+      <Switch>
+        <Route path='/' component={TextToEmoji} exact={true} />
+        <Route path='/showSavedMessages' component={ShowMessages} exact />
+        <Route path='/addEmoji' component={AddEmoji} exact />
+
+        {/* Not Found Page */}
+        <Route path='*' component={NotFoundPage} exact={true} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
