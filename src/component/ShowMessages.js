@@ -24,9 +24,10 @@ const ShowMessages = () => {
       <ul variant='flush'>
         {getMessages &&
           getMessages.length > 0 &&
-          getMessages.map((message) => {
+          getMessages.map((message, key) => {
             return (
               <li
+                key={key}
                 style={{
                   fontSize: '120%',
                   width: '50%',

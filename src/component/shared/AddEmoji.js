@@ -5,21 +5,21 @@ import { addEmoji } from '../../action/Emoji'
 import FormContainer from './FormContainer'
 
 const AddEmoji = () => {
-  const [Key, setKey] = useState()
-  const [emoji, setEmoji] = useState()
+  const [Key, setKey] = useState('')
+  const [emoji, setEmoji] = useState('')
 
   const dispatch = useDispatch()
   const emojiList = useSelector((state) => state.emojiList)
   console.log(emojiList)
 
   const submitFormHandler = (e) => {
-    console.log(Key, emoji)
+    //console.log(Key, emoji)
     e.preventDefault()
-    setKey(['::', Key, '::'].join(''))
-    console.log(Key, emoji)
-    dispatch(addEmoji({ Key: emoji }))
-    setKey()
-    setEmoji()
+    //setKey(['::', Key, '::'].join(''))
+    //console.log(Key, emoji)
+    dispatch(addEmoji({ Key, emoji }))
+    setKey('')
+    setEmoji('')
   }
 
   return (
