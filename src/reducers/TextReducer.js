@@ -8,7 +8,7 @@ import {
   SHOW_ALL_TEXT_FAIL,
   SHOW_ALL_TEXT_REQUEST,
   SHOW_ALL_TEXT_SUCCESS,
-} from '../constants/TextConstants'
+} from "../constants/TextConstants"
 
 const saveMessageReducer = (state = {}, action) => {
   switch (action.type) {
@@ -35,19 +35,20 @@ const getSavedMessagesReducer = (state = { getMessages: [] }, action) => {
   }
 }
 const AddEmojiReducer = (state = {}, action) => {
-  const data = action.payload
-  console.log('reducer', data)
   switch (action.type) {
     case ADD_EMOJI_REQUEST:
       return { ...state, loading: true }
     case ADD_EMOJI_SUCCESS:
-      return { ...state, loading: false }
-    case ADD_EMOJI_FAIL:
+      var { emojiKey, emoji } = action.payload
+
+      localStorage.setItem("::" + emojiKey + "::", emoji)
       return {
         ...state,
         loading: false,
-        emojiList: [...state.emojiList, data],
+        succes: true,
       }
+    case ADD_EMOJI_FAIL:
+      return { ...state, loading: false, error: action.payload }
     default:
       return state
   }

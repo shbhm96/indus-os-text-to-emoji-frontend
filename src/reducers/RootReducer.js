@@ -1,17 +1,17 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux"
 import {
   saveMessageReducer,
   getSavedMessagesReducer,
   AddEmojiReducer,
-} from './TextReducer'
+} from "./TextReducer"
 
 const initialState = {
-  emojiList: { '::happy::': '😃', '::sad::': '😞' },
+  initialEmojiList: { emojiList: { "::happy::": "😃", ":sad::": "😞" } },
   saveMessage: {},
   getSavedMessages: { getMessages: [] },
 }
 const rootReducers = combineReducers({
-  emojiList: AddEmojiReducer,
+  initialEmojiList: AddEmojiReducer,
   saveMessage: saveMessageReducer,
   getSavedMessages: getSavedMessagesReducer,
 })

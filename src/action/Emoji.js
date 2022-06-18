@@ -35,15 +35,16 @@ const getSavedMessages = () => async (dispatch) => {
   }
 }
 
-const addEmoji = (data) => async (dispatch) => {
-  try {
-    console.log('data', data)
-    data['Key'] = '::' + data['Key'] + '::'
-    dispatch({ type: ADD_EMOJI_REQUEST })
-    dispatch({ type: ADD_EMOJI_SUCCESS, payload: data })
-  } catch (err) {
-    const error = "Emoji Can't be Added"
-    dispatch({ type: ADD_EMOJI_FAIL, payload: error })
+const addEmoji =
+  ({ emojiKey, emoji }) =>
+  async (dispatch) => {
+    try {
+      console.log({ emojiKey, emoji })
+      dispatch({ type: ADD_EMOJI_REQUEST })
+      dispatch({ type: ADD_EMOJI_SUCCESS, payload: { emojiKey, emoji } })
+    } catch (err) {
+      const error = "Emoji Can't be Added"
+      dispatch({ type: ADD_EMOJI_FAIL, payload: error })
+    }
   }
-}
 export { saveMessage, getSavedMessages, addEmoji }
